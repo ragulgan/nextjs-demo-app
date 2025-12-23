@@ -13,16 +13,23 @@ import InfoIcon from "@mui/icons-material/Info";
 
 const drawerWidth = 240;
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  open: boolean;
+  onToggle: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ open, onToggle }) => {
   const items = [
-    { text: "Home", icon: <HomeIcon /> },
-    { text: "Courses", icon: <MenuBookIcon /> },
-    { text: "About", icon: <InfoIcon /> },
+    { id: 1, text: "Home", icon: <HomeIcon /> },
+    { id: 2, text: "Courses", icon: <MenuBookIcon /> },
+    { id: 3, text: "About", icon: <InfoIcon /> },
   ];
 
   return (
     <Drawer
-      variant="permanent"
+      open={open}
+      onClose={onToggle}
+      variant="persistent"
       sx={{
         width: drawerWidth,
         flexShrink: 0,
@@ -32,11 +39,11 @@ const Sidebar: React.FC = () => {
       <Toolbar />
       <Box sx={{ overflow: "auto" }}>
         <List>
-          {items.map((it) => (
-            <ListItem key={it.text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>{it.icon}</ListItemIcon>
-                <ListItemText primary={it.text} />
+          {items.map((item) => (
+            <ListItem key={item.id} disablePadding>
+              <ListItemButton onClick={onToggle}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
               </ListItemButton>
             </ListItem>
           ))}

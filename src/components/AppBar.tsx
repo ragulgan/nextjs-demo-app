@@ -5,11 +5,21 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const HeaderAppBar: React.FC = () => {
+interface HeaderAppBarProps {
+  onMenuClick: () => void;
+}
+
+const HeaderAppBar: React.FC<HeaderAppBarProps> = ({ onMenuClick }) => {
   return (
     <AppBar position="static" color="primary" elevation={1}>
       <Toolbar>
-        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          sx={{ mr: 2 }}
+          onClick={onMenuClick}
+        >
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
