@@ -16,7 +16,13 @@ export const getLocalStorage = (key: string): string | false => {
 
 export const safeJSONParse = (data: string | null | undefined) => {
   try {
-    return data ? JSON.parse(data) : null;
+    // Return null if data is null, undefined, or empty string
+    if (!data || data === "undefined" || data === "null") {
+      return null;
+    }
+    
+    // Try to parse the JSON string
+    return JSON.parse(data);
   } catch (error) {
     console.error("JSON parse error:", error);
     return null;

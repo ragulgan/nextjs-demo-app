@@ -25,9 +25,10 @@ export const login = createAsyncThunk(
   async (credentials: Credentials, thunkAPI) => {
     try {
       const response = await loginAdmin(credentials);
-      return response.data;
+      // AxiosInterceptor already returns response.data, so response is the full API response
+      return response;
     } catch (err: any) {
-      return thunkAPI.rejectWithValue(err?.response?.data);
+      return thunkAPI.rejectWithValue(err?.response?.data || err);
     }
   }
 );
@@ -52,10 +53,12 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.token = action.payload?.data;
-        state.user = action.payload?.data;
-        if (typeof window !== "undefined") {
-          localStorage.setItem("adminInfo", JSON.stringify(action.payload?.data));
+        // action.payload is { code, messageCode, data: {...user data with token}, message }
+        const userData = action.payload?.data;
+        state.token = userData?.token;
+        state.user = userData;
+        if (typeof window !== "undefined" && userData) {
+          localStorage.setItem("adminInfo", JSON.stringify(userData));
         }
       })
       .addCase(login.rejected, (state, action) => {
