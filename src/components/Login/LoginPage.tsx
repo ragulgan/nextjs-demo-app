@@ -17,9 +17,9 @@ import {
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { login } from "@/redux/slices/authSlice";
-import { login_User } from "@/redux/slices/authUserSlice";
-import { useSnackbar } from "@/components/Common/snackbar";
+import { login } from "@/redux/slices/auth/authSlice";
+import { login_User } from "@/redux/slices/auth/authUserSlice";
+import { useSnackbar } from "@/components/common/snackbar";
 import { regexPattern, errorMessage } from "@/utils/regex";
 
 type FormValues = {

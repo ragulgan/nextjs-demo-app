@@ -9,8 +9,8 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { logout as logoutAdmin } from "@/redux/slices/authSlice";
-import { logout as logoutUser } from "@/redux/slices/authUserSlice";
+import { logout as logoutAdmin } from "@/redux/slices/auth/authSlice";
+import { logout as logoutUser } from "@/redux/slices/auth/authUserSlice";
 
 interface HeaderAppBarProps {
   onMenuClick: () => void;

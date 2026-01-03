@@ -6,3 +6,4 @@ export const createStudent = (data: any) => AxiosInterceptor.post('/student', da
 export const updateStudent = (id: string, data: any) => AxiosInterceptor.put(`/student/${id}`, data);
 export const deleteStudent = (id: string) => AxiosInterceptor.delete(`/student/${id}`);
 
+

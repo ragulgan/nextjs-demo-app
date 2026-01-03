@@ -11,7 +11,7 @@ import {
   InputLabel,
 } from "@mui/material";
 import { createStudent, updateStudent } from "@/redux/slices/studentSlice";
-import { useSnackbar } from "@/components/Common/snackbar";
+import { useSnackbar } from "@/components/common/snackbar";
 import { regexPattern, errorMessage } from "@/utils/regex";
 import { AppDispatch } from "@/redux/stote";
 

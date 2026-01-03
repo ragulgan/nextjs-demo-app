@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import theme from "@/theme";
-import SnackbarProvider from "@/components/Common/snackbar";
+import SnackbarProvider from "@/components/common/snackbar";
 import { safeJSONParse } from "@/utils/helper";
 import { SESSION } from "@/utils/constant";
 

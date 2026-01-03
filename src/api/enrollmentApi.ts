@@ -6,3 +6,4 @@ export const createEnrollment = (data: any) => AxiosInterceptor.post('/enrollmen
 export const updateEnrollment = (id: string, data: any) => AxiosInterceptor.put(`/enrollment/${id}`, data);
 export const deleteEnrollment = (id: string) => AxiosInterceptor.delete(`/enrollment/${id}`);
 
+

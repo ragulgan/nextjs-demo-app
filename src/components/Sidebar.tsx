@@ -44,6 +44,12 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onToggle }) => {
       visible: true,
     },
     {
+      text: "Colleges",
+      icon: PeopleIcon,
+      path: "/colleges",
+      visible: true,
+    },
+    {
       text: "Students",
       icon: PeopleIcon,
       path: "/students",

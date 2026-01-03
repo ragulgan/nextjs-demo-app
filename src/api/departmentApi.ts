@@ -6,3 +6,4 @@ export const createDepartment = (data: any) => AxiosInterceptor.post('/departmen
 export const updateDepartment = (id: string, data: any) => AxiosInterceptor.put(`/department/${id}`, data);
 export const deleteDepartment = (id: string) => AxiosInterceptor.delete(`/department/${id}`);
 
+

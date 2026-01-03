@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import FormDialog from "@/components/Common/FormDialog";
+import FormDialog from "@/components/common/FormDialog";
 import StudentForm from "./StudentForm";
 
 interface StudentFormDialogProps {

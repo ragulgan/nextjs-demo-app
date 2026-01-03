@@ -12,14 +12,14 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
-import DataTable from "@/components/Common/DataTable";
-import StudentFormDialog from "@/components/Students/StudentFormDialog";
+import DataTable from "@/components/common/DataTable";
+import StudentFormDialog from "@/components/students/StudentFormDialog";
 import {
   fetchStudents,
   deleteStudent,
   clearCurrentStudent,
 } from "@/redux/slices/studentSlice";
-import { useSnackbar } from "@/components/Common/snackbar";
+import { useSnackbar } from "@/components/common/snackbar";
 import { AppDispatch } from "@/redux/stote";
 
 const StudentsPage: React.FC = () => {
