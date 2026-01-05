@@ -48,6 +48,10 @@ const DataTable: React.FC<DataTableProps> = ({
     );
   }
 
+  const getNestedValue = (obj: any, path: string) => {
+    return path.split(".").reduce((acc, key) => acc?.[key], obj);
+  };
+
   if (rows.length === 0) {
     return (
       <Box sx={{ p: 3, textAlign: "center" }}>
@@ -81,7 +85,8 @@ const DataTable: React.FC<DataTableProps> = ({
           {rows.map((row, index) => (
             <TableRow hover role="checkbox" tabIndex={-1} key={row.id || index}>
               {columns.map((column) => {
-                const value = row[column.id];
+                // const value = row[column.id]; // Original line before nested support
+                const value = getNestedValue(row, column.id);
                 return (
                   <TableCell key={column.id} align={column.align}>
                     {column.format ? column.format(value) : value}

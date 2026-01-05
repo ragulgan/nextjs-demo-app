@@ -8,7 +8,11 @@ import collegeAddReducer from "./slices/college/collegeAddSlice";
 import collegeUpdateReducer from "./slices/college/collegeUpdateSlice";
 import collegeEditReducer from "./slices/college/collegeEditSlice";
 import collegeDeleteReducer from "./slices/college/collegeDeleteSlice";
-
+import departmentListReducer from "./slices/department/departmentListSlice";
+import departmentAddReducer from "./slices/department/departmentAddSlice";
+import departmentUpdateReducer from "./slices/department/departmentUpdateSlice";
+import departmentEditReducer from "./slices/department/departmentEditSlice";
+import departmentDeleteReducer from "./slices/department/departmentDeleteSlice";
 const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -21,6 +25,13 @@ const store = configureStore({
     collegeUpdate: collegeUpdateReducer,
     collegeEdit: collegeEditReducer,
     collegeDelete: collegeDeleteReducer,
+
+    // Department reducers
+    departmentList: departmentListReducer,
+    departmentAdd: departmentAddReducer,
+    departmentUpdate: departmentUpdateReducer,
+    departmentEdit: departmentEditReducer,
+    departmentDelete: departmentDeleteReducer,
   },
 });
 

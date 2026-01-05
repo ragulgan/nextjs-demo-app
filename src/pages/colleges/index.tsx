@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Typography, Button, Paper, TextField, InputAdornment } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import SchoolIcon from "@mui/icons-material/School";
 import SearchIcon from "@mui/icons-material/Search";
 import DataTable from "@/components/common/DataTable";
 import CollegeFormDialog from "@/components/college/CollegeFormDialog";
 import CollegeViewDialog from "@/components/college/CollegeViewDialog";
-import { fetchUserList } from "@/redux/slices/college/collegeListSlice";
+import { fetchCollegeList } from "@/redux/slices/college/collegeListSlice";
 import { deleteCollegeMethod } from "@/redux/slices/college/collegeDeleteSlice";
 import { AppDispatch } from "@/redux/stote";
 import { useSnackbar } from "@/components/common/snackbar";
@@ -16,7 +17,6 @@ const CollegesPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { enqueueSnackbar } = useSnackbar();
   const { users, loading } = useSelector((state: any) => state.collegeList);
-  console.log("Colleges state:", users);
   const [openDialog, setOpenDialog] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [editingCollege, setEditingCollege] = useState<any>(null);
@@ -24,7 +24,7 @@ const CollegesPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    dispatch(fetchUserList({}));
+    dispatch(fetchCollegeList({}));
   }, [dispatch]);
 
   const handleAdd = () => {
@@ -42,7 +42,7 @@ const CollegesPage: React.FC = () => {
       try {
         await dispatch(deleteCollegeMethod(college.id)).unwrap();
         enqueueSnackbar("College deleted successfully", "success");
-        dispatch(fetchUserList({}));
+        dispatch(fetchCollegeList({}));
       } catch (error: any) {
         enqueueSnackbar(error?.message || "Failed to delete college", "error");
       }
@@ -61,11 +61,11 @@ const CollegesPage: React.FC = () => {
 
   const handleSubmitSuccess = () => {
     handleCloseDialog();
-    dispatch(fetchUserList({}));
+    dispatch(fetchCollegeList({}));
   };
-console.log("users:", users);
+
   const collegesArray = Array.isArray(users) ? users : [];
-  console.log("Colleges Array:", collegesArray);
+
 
   const filtered = collegesArray.filter((c: any) => {
     const s = searchTerm.toLowerCase();
@@ -88,7 +88,10 @@ console.log("users:", users);
   return (
     <Box sx={{ p: 3 }}>
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+        <SchoolIcon sx={{ fontSize: 40, color: "primary.main" }} />
         <Typography variant="h4" sx={{ fontWeight: "bold" }}>College Management</Typography>
+        </Box>
         <Button variant="contained" startIcon={<AddIcon />} onClick={handleAdd}>Add College</Button>
       </Box>
 

@@ -2,8 +2,8 @@ import React, { forwardRef, useImperativeHandle } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Box, TextField, FormControl, FormHelperText, InputLabel, Select, MenuItem } from "@mui/material";
-import { userAddMethod } from "@/redux/slices/college/collegeAddSlice";
-import { userUpdateMethod } from "@/redux/slices/college/collegeUpdateSlice";
+import { collegeAddMethod } from "@/redux/slices/college/collegeAddSlice";
+import { collegeUpdateMethod } from "@/redux/slices/college/collegeUpdateSlice";
 import { useSnackbar } from "@/components/common/snackbar";
 import { AppDispatch } from "@/redux/stote";
 
@@ -52,10 +52,10 @@ const CollegeForm = forwardRef<CollegeFormHandle, CollegeFormProps>(({ college, 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       if (college?.id) {
-        await (dispatch as any)(userUpdateMethod({ id: college.id, data })).unwrap();
+        await (dispatch as any)(collegeUpdateMethod({ id: college.id, data })).unwrap();
         enqueueSnackbar("College updated successfully", "success");
       } else {
-        await (dispatch as any)(userAddMethod(data)).unwrap();
+        await (dispatch as any)(collegeAddMethod(data)).unwrap();
         enqueueSnackbar("College created successfully", "success");
       }
       onSuccess();

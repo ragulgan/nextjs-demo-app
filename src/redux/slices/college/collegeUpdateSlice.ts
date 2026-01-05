@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { collegeUpdate } from "@/api/authApi";
 
-export const userUpdateMethod = createAsyncThunk('college/update', async ({ id, data }, thunkAPI) => {
+export const collegeUpdateMethod = createAsyncThunk('college/update', async ({ id, data }, thunkAPI) => {
     try {
         const response = await collegeUpdate(id, data);
         return response.data;
@@ -10,7 +10,7 @@ export const userUpdateMethod = createAsyncThunk('college/update', async ({ id, 
     }
 });
 
-const userUpdateSlice = createSlice({
+const collegeUpdateSlice = createSlice({
     name: 'collegeUpdate',
     initialState: {
         user: null,
@@ -23,11 +23,11 @@ const userUpdateSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(userUpdateMethod.pending, (state) => {
+            .addCase(collegeUpdateMethod.pending, (state) => {
                 state.loading = true;
                 state.error = null;
             })
-            .addCase(userUpdateMethod.fulfilled, (state, action) => {
+            .addCase(collegeUpdateMethod.fulfilled, (state, action) => {
                 state.loading = false;
                 const payload: any = action.payload;
                 state.user = payload.data;
@@ -36,7 +36,7 @@ const userUpdateSlice = createSlice({
                 state.message = payload.message;
                 state.error = null;
             })
-            .addCase(userUpdateMethod.rejected, (state, action) => {
+            .addCase(collegeUpdateMethod.rejected, (state, action) => {
                 state.loading = false;
                 state.user = null;
                 const payload: any = action.payload;
@@ -47,4 +47,4 @@ const userUpdateSlice = createSlice({
     },
 });
 
-export default userUpdateSlice.reducer;
+export default collegeUpdateSlice.reducer;

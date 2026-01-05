@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { collegeList } from '@/api/authApi';
 
-export const fetchUserList = createAsyncThunk('college/list', async (params, { rejectWithValue }) => {
+export const fetchCollegeList = createAsyncThunk('college/list', async (params, { rejectWithValue }) => {
     try {
         const response = await collegeList(params);
         return response;
@@ -11,7 +11,7 @@ export const fetchUserList = createAsyncThunk('college/list', async (params, { r
 }
 );
 
-const userSlice = createSlice({
+const collegeListSlice = createSlice({
     name: 'collegeList',
     initialState: {
         users: [],
@@ -25,11 +25,11 @@ const userSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchUserList.pending, (state) => {
+            .addCase(fetchCollegeList.pending, (state) => {
                 state.loading = true;
                 state.error = null;
             })
-            .addCase(fetchUserList.fulfilled, (state, action) => {
+            .addCase(fetchCollegeList.fulfilled, (state, action) => {
                 state.loading = false;
                 const payload: any = action.payload;
                 state.users = payload.data || [];
@@ -39,7 +39,7 @@ const userSlice = createSlice({
                 state.message = payload.message;
                 state.error = null;
             })
-            .addCase(fetchUserList.rejected, (state, action) => {
+            .addCase(fetchCollegeList.rejected, (state, action) => {
                 state.loading = false;
                 state.users = [];
                 state.count = 0;
@@ -51,4 +51,4 @@ const userSlice = createSlice({
     },
 });
 
-export default userSlice.reducer;
+export default collegeListSlice.reducer;
