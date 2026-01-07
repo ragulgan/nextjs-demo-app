@@ -1,5 +1,6 @@
 export const SESSION = {
-  ADMIN_TOKEN: "adminInfo"
+  ADMIN_TOKEN: "adminInfo",
+  USER_TOKEN: "userInfo"
 };
 
 export const HEADER = {

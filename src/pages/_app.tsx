@@ -28,7 +28,7 @@ const hasToken = (): boolean => {
   if (typeof window === "undefined") return false;
   
   const adminInfo = localStorage.getItem(SESSION.ADMIN_TOKEN);
-  const userInfo = localStorage.getItem("userInfo");
+  const userInfo = localStorage.getItem(SESSION.USER_TOKEN);
   
   const adminData = safeJSONParse(adminInfo);
   const userData = safeJSONParse(userInfo);

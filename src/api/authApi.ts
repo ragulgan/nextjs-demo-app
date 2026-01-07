@@ -18,3 +18,9 @@ export const getDepartmentById = (id: string) => AxiosInterceptor.get(`/departme
 export const departmentAdd = (data: any) => AxiosInterceptor.post('/department', data);
 export const departmentUpdate = (id: any, data: any) => AxiosInterceptor.put(`/department/${id}`, data);
 export const deleteDepartment = (id: string) => AxiosInterceptor.delete(`/department/${id}`);
+
+export const courseList = (params?: any) => AxiosInterceptor.get('/course', { params });
+export const getCourseById = (id: string) => AxiosInterceptor.get(`/course/${id}`);
+export const courseAdd = (data: any) => AxiosInterceptor.post('/course', data);
+export const courseUpdate = (id: any, data: any) => AxiosInterceptor.put(`/course/${id}`, data);
+export const deleteCourse = (id: string) => AxiosInterceptor.delete(`/course/${id}`);
